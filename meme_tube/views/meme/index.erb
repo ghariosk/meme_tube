@@ -1,24 +1,45 @@
+<form action='/meme/new' method='get'>
+	<input type='submit' value="New Entry">
+</form>
 
 <% @meme.each_with_index do |element,index| %>
+<div class='video'>
 
-	<p>   <%= element.title %> </p>
+	<h2>   <%= element.title %> </h2>
 
-	<p> <%= element.url %> </p>
+		
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/<%= (element.url).sub('https://www.youtube.com/watch?v=' , '')%>" frameborder="0" allowfullscreen></iframe>
+
+			<div class="button">
+			<h3>   <%= element.genre %> </h3>
+			<form action='/meme/<%= element.id %>' method="POST">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="submit" value="Delete">
+			</form>
+
+			<form action='meme/<%= element.id %>/edit' method='get'>
+				<button type="submit"> Edit </button>
+			</form>
+			</div>
+	
+	
+
+	
+	<p>   <%= element.description %> </p>
+	
 
 
-	<form action='/meme/:id' method="POST">
-		<input type="hidden" name="_method" value="DELETE">
-		<input type="submit" value="Delete">
-	</form>
 
-	<form action='meme/<%= element.id %>/edit' method='get'>
-		<button type="submit"> Edit </button>
-	</form>
+
+</div>
 
 <% end %>
 
 
-<form action='/meme/new' method='get'>
-	<input type='submit' value="New Entry">
-</form>
+
+
+
+
+
+
 

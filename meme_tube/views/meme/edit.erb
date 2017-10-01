@@ -1,9 +1,19 @@
 <form action='/meme/<%= @meme.id %>' method='POST'>
 
-	<label for='title'> Title </label>
+	<label for='title'> Title: </label>
 	<input type='text' name='title' placeholder='Meme Title' value='<%= @meme.title %>'>
-	<label for='url'> Video </label>
+
+	<label for='url'> Video: </label>
 	<textarea name='url' placeholder='Meme Video'> <%= @meme.url %> </textarea>
+
+	<label for='description'> Description: </label>
+	<textarea name='description' placeholder='Meme Description'> <%= @meme.description %> </textarea>
+
+	<label for='genre'> Genre: </label>
+	<textarea name='genre' placeholder='Meme Genre'> <%= @meme.genre %> </textarea>
+
+
+
 	<input type="hidden" name="_method" value="PUT">
 	<input type='submit' value="Save">
 	

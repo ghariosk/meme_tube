@@ -1,0 +1,53 @@
+
+body {
+	background-color:grey;
+}
+
+
+.video {
+	
+	position:relative;
+	left:200px;
+	display:inline-block;
+	width:800px;
+/*	background-color:blue;*/
+}
+
+iframe {
+	margin:0px 87px;
+}
+
+
+h2 {
+	color:red;
+	position:relative;
+	display :block;
+	text-align: center
+	
+
+}
+
+
+
+
+
+h1{
+	color:red;
+}
+
+
+.button {
+	display:inline-block;
+	width:40px;
+	margin:0px;
+	position:absolute;
+
+}
+
+p {
+	text-align:center;
+}
+
+label {
+	color:yellow;
+}

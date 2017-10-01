@@ -1,7 +1,7 @@
 require 'pg'
 class Meme
 
-	attr_accessor :id , :title , :url
+	attr_accessor :id , :title , :url , :description , :genre
 
 	def self.open_connection
 		PG::Connection.connect( dbname: "meme_tube")
@@ -19,9 +19,12 @@ class Meme
 
 	def self.hydrate meme_data
 		meme = Meme.new
+
 		meme.id=meme_data['id']
 		meme.title=meme_data['title']
 		meme.url=meme_data['url']
+		meme.description=meme_data['description']
+		meme.genre=meme_data['genre']
 
 		meme
 	end
@@ -35,11 +38,13 @@ class Meme
 
 	def save 
 		conn=Meme.open_connection
+
 		if (!self.id)
-			sql="INSERT INTO meme (title, url) VALUES ('#{self.title}' , '#{self.url}')"
+			sql="INSERT INTO meme (title, url, description, genre) VALUES ('#{self.title}' , '#{self.url}' , '#{self.description}' , '#{self.genre}')"
 		else 
-			sql="UPDATE meme SET title='#{self.title}',url='#{self.url}' WHERE id=#{id}"
+			sql="UPDATE meme SET title='#{self.title}',url='#{self.url}', description='#{self.description}', genre='#{self.genre}' WHERE id=#{id}"
 		end
+
 		conn.exec(sql)
 	end
 

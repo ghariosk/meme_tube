@@ -19,6 +19,7 @@ class MemeController < Sinatra::Base
 
 		@id=params[:id].to_i
 
+
 		erb :'meme/index'
 	end
 
@@ -43,6 +44,8 @@ class MemeController < Sinatra::Base
 
 		@meme.title=params[:title]
 		@meme.url=params[:url]
+		@meme.description=params[:description]
+		@meme.genre=params[:genre]
 
 		@meme.save
 
@@ -70,6 +73,8 @@ class MemeController < Sinatra::Base
 
 		@meme.title=params[:title]
 		@meme.url=params[:url]
+		@meme.description=params[:description]
+		@meme.genre=params[:genre]
 
 		@meme.save
 
@@ -81,13 +86,11 @@ class MemeController < Sinatra::Base
 
 
 	delete '/meme/:id' do
-		@id=params[:id].to_i
-
-		@meme=$meme
-
-		@meme.delete_at(@id)
-
+		Meme.destroy(params[:id].to_i)
 		redirect '/meme'
 	end
 
 end
+
+
+
