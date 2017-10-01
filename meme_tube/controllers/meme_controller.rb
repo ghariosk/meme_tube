@@ -43,6 +43,24 @@ class MemeController < Sinatra::Base
 		erb : '/meme/new'
 	end
 
+	post '/meme' do
+
+		@memes=$meme
+		new_meme={
+		title:params[:title],
+		url:params[:url]
+		}
+
+		@memes << new_meme
+
+		redirect :'/meme/:id'
+	end
+
+
+
+
+
+
 
 
 end
