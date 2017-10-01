@@ -1,7 +1,22 @@
 
+<div class='video'>
+	<h2> <%= @meme.title %> </h2>
 
-<p> <%= @meme.title %> </p>
 
-<p> <%= @meme.url %> </p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/<%= (@meme.url).sub('https://www.youtube.com/watch?v=' , '')%>" frameborder="0" allowfullscreen></iframe>
+
+	<div class="button">
+		<h3> <%= @meme.genre %> </h3>
+	</div>
+
+	<p> <%= @meme.description %> </p>
+
+
+
+	<form action='../meme' method='get'>
+		<button type="submit"> Homepage </button>
+	</form>
+</div>
 
 

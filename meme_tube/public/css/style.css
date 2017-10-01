@@ -1,8 +1,8 @@
 
 body {
-	background-color:grey;
+	background-color:#dadccf;
+	font-family: Helvetica
 }
-
 
 .video {
 	
@@ -19,7 +19,7 @@ iframe {
 
 
 h2 {
-	color:red;
+	
 	position:relative;
 	display :block;
 	text-align: center
@@ -27,12 +27,13 @@ h2 {
 
 }
 
-
-
-
-
 h1{
 	color:red;
+}
+
+button {
+	display:block;
+	margin:auto;
 }
 
 
@@ -50,4 +51,16 @@ p {
 
 label {
 	color:yellow;
+	display:block;
+	margin:0 auto;
+}
+
+input {
+	display:block;
+}
+
+textarea {
+	display:block;
+	width:400px;
+	height:25px;
 }
