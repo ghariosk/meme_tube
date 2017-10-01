@@ -1,9 +1,9 @@
 
 <% @meme.each_with_index do |element,index| %>
 
-	<p>   <%= element[:title] %> </p>
+	<p>   <%= element.title %> </p>
 
-	<p> <%= element[:link] %> </p>
+	<p> <%= element.url %> </p>
 
 
 	<form action='/meme/:id' method="POST">
@@ -11,7 +11,7 @@
 		<input type="submit" value="Delete">
 	</form>
 
-	<form action='meme/<%= @id %>/edit' method='get'>
+	<form action='meme/<%= element.id %>/edit' method='get'>
 		<button type="submit"> Edit </button>
 	</form>
 

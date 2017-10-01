@@ -1,9 +1,9 @@
-<form action='/meme/<%= @id %>' method='POST'>
+<form action='/meme/<%= @meme.id %>' method='POST'>
 
 	<label for='title'> Title </label>
-	<input type='text' name='title' placeholder='Meme Title' value='<%= @meme[:title] %>'>
+	<input type='text' name='title' placeholder='Meme Title' value='<%= @meme.title %>'>
 	<label for='url'> Video </label>
-	<textarea name='url' placeholder='Meme Video'> <%= @meme[:link] %> </textarea>
+	<textarea name='url' placeholder='Meme Video'> <%= @meme.url %> </textarea>
 	<input type="hidden" name="_method" value="PUT">
 	<input type='submit' value="Save">
 	

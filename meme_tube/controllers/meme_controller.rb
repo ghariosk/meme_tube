@@ -11,18 +11,11 @@ class MemeController < Sinatra::Base
 	set :views, Proc.new { File.join(root, 'views') }
 
 
-	$meme=[{
-	title:'meme',
-	link:'hehe'
-	},
-	{
-	title:'meme2',
-	link:'hehehe'
-	}]
+
 
 	get '/meme'  do 
 
-		@meme=$meme
+		@meme=Meme.all
 
 		@id=params[:id].to_i
 
@@ -36,10 +29,7 @@ class MemeController < Sinatra::Base
 	get '/meme/:id' do
 		@id= params[:id].to_i
 
-		@meme=$meme[@id]
-
-		@title=@meme[:title]
-		@url=@meme[:link]
+		@meme=Meme.find(@id)
 
 		erb :'meme/show'
 	end
@@ -49,16 +39,14 @@ class MemeController < Sinatra::Base
 
 	post '/meme' do
 
-		@memes=$meme
+		@meme=Meme.new
 
-		new_meme={
-		title:params[:title],
-		link:params[:url]
-		}
+		@meme.title=params[:title]
+		@meme.url=params[:url]
 
-		@memes << new_meme
+		@meme.save
 
-		"HELLO"
+	
 
 		redirect '/meme'
 
@@ -67,7 +55,8 @@ class MemeController < Sinatra::Base
 	get '/meme/:id/edit' do
 		@id=params[:id].to_i
 
-		@meme=$meme[@id]
+		@meme=Meme.find(@id)
+
 
 
 		erb :'meme/edit'
@@ -76,11 +65,16 @@ class MemeController < Sinatra::Base
 
 	put '/meme/:id' do
 		@id=params[:id].to_i
-		@meme=$meme[@id]
-		@meme[:title]=params[:title]
-		@meme[:link]=params[:url]
 
-		puts @meme
+		@meme=Meme.find(@id)
+
+		@meme.title=params[:title]
+		@meme.url=params[:url]
+
+		@meme.save
+
+
+		
 
 		redirect "/meme/#{@id}"
 	end

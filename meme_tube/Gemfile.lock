@@ -4,7 +4,7 @@ GEM
     backports (3.8.0)
     multi_json (1.12.2)
     mustermann (1.0.1)
-    pg (0.21.0)
+    pg (0.9.0)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -28,7 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  pg
+  pg (= 0.9.0)
   rack
   sinatra
   sinatra-reloader
