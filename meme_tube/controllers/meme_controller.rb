@@ -11,22 +11,27 @@ class MemeController < Sinatra::Base
 	set :views, Proc.new { File.join(root, 'views') }
 
 
-	$meme=[
-	{
+	$meme=[{
 	title:'meme',
 	link:'hehe'
 	},
 	{
 	title:'meme2',
 	link:'hehehe'
-	}
-	]
+	}]
 
 	get '/meme'  do 
 
-		erb :'/meme/index'
+		@meme=$meme
+
+		@id=params[:id].to_i
+
+		erb :'meme/index'
 	end
 
+	get '/meme/new' do
+		erb :'meme/new'
+	end
 
 	get '/meme/:id' do
 		@id= params[:id].to_i
@@ -36,31 +41,59 @@ class MemeController < Sinatra::Base
 		@title=@meme[:title]
 		@url=@meme[:link]
 
-			erb :'/meme/show'
-		end
-
-	get '/meme/new' do
-		erb : '/meme/new'
+		erb :'meme/show'
 	end
+
+
+
 
 	post '/meme' do
 
 		@memes=$meme
+
 		new_meme={
 		title:params[:title],
-		url:params[:url]
+		link:params[:url]
 		}
 
 		@memes << new_meme
 
-		redirect :'/meme/:id'
+		"HELLO"
+
+		redirect '/meme'
+
+	end
+
+	get '/meme/:id/edit' do
+		@id=params[:id].to_i
+
+		@meme=$meme[@id]
+
+
+		erb :'meme/edit'
 	end
 
 
+	put '/meme/:id' do
+		@id=params[:id].to_i
+		@meme=$meme[@id]
+		@meme[:title]=params[:title]
+		@meme[:link]=params[:url]
+
+		puts @meme
+
+		redirect "/meme/#{@id}"
+	end
 
 
+	delete '/meme/:id' do
+		@id=params[:id].to_i
 
+		@meme=$meme
 
+		@meme.delete_at(@id)
 
+		redirect '/meme'
+	end
 
 end

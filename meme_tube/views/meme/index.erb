@@ -1,1 +1,24 @@
-<h1> helo </h1>
+
+<% @meme.each_with_index do |element,index| %>
+
+	<p>   <%= element[:title] %> </p>
+
+	<p> <%= element[:link] %> </p>
+
+
+	<form action='/meme/:id' method="POST">
+		<input type="hidden" name="_method" value="DELETE">
+		<input type="submit" value="Delete">
+	</form>
+
+	<form action='meme/<%= @id %>/edit' method='get'>
+		<button type="submit"> Edit </button>
+	</form>
+
+<% end %>
+
+
+<form action='/meme/new' method='get'>
+	<input type='submit' value="New Entry">
+</form>
+
