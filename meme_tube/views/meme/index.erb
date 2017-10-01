@@ -5,7 +5,7 @@
 <% @meme.each_with_index do |element,index| %>
 <div class='video'>
 
-	<h2>   <%= element.title %> </h2>
+	<h2>   <a href="/meme/<%= element.id %>"> <%= element.title %> </a> </h2>
 
 		
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/<%= (element.url).sub('https://www.youtube.com/watch?v=' , '')%>" frameborder="0" allowfullscreen></iframe>
